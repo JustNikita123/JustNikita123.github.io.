@@ -1,0 +1,124 @@
+* 
+  padding: 0px
+  margin: 0px
+  border: none
+
+*,
+*::before,
+*::after 
+  box-sizing: border-box
+
+:focus,
+:active 
+  outline: none
+
+a:focus,
+a:active 
+  outline: none
+
+a,
+a:link,
+a:visited 
+  text-decoration: none
+
+a:hover 
+  text-decoration: none
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p 
+  font-size: inherit
+  font-weight: inherit
+
+ul,
+ul li 
+  list-style: none
+
+
+img 
+  vertical-align: top
+
+input::-ms-clear 
+  display: none
+
+button,pЗ,
+input[type="submit"] 
+  display: inline-block
+  box-shadow: none
+  background: none
+  cursor: pointer
+
+input:focus,
+input:active,
+button:focus,
+button:active 
+  outline: none
+
+button::-moz-focus-inner 
+  padding: 0
+  border: 0
+
+a 
+  text-decoration: none
+
+/* ---------- */
+$secondary: #FF0000
+$dark: #343434
+$light: green
+$font-family: 'Open Sans'
+$maxWidthContainer: 1140px
+
+@mixin font($font-family, $font-weight, $font-size, $line-height, $color)
+  font-family: $font-family
+  font-weight: $font-weight
+  font-size: $font-size
+  line-height: $line-height
+  color: $color
+
+@mixin adaptive-font($property, $maxSize, $minSize)
+  #{$property}: $maxSize + px
+  $first: $maxSize - $minSize
+  $second: calc(100vw - 320px)
+  $third: $maxWidthContainer - 320
+  $first-first: $minSize + px
+  @media (max-width: $maxWidthContainer + px)
+    #{$property}: calc($first-first + $first * ($second / $third))
+
+@mixin adaptive-m-or-p($property, $maxSize, $minSize, $the-second-value) 
+  #{$property}: $maxSize + px $the-second-value + px
+  $first-first: $minSize + px
+  $first: $maxSize - $minSize
+  $second: calc(100vw - 320px)
+  $third: $maxWidthContainer - 320
+  @media (max-width: $maxWidthContainer + px) 
+    #{$property}: calc($first-first + $first * ($second / $third)) $the-second-value + px
+  
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;300;500;600;800&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@700&display=swap')
+/* ------ */
+
+html, body
+    min-width: 320px
+    min-height: 100%
+
+.wrapper
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  min-height: 100vh
+
+body
+    font-family: $font-family
+    font-weight: 400
+    color: $dark
+    line-height: 1
+    background-color: #EDEDED
+main
+  flex: 1 1 auto 
+  
+/* ----------- */
